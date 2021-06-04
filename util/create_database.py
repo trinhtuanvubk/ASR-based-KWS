@@ -29,7 +29,6 @@ def create_database_ctc(args) :
         
         matrix_learned_phoneme.append(learned_phoneme)
         # print(tensor_probs)
-        # the probs of learned_phoneme 
         # learned_phoneme_probs = math.prod(torch.max(np.exp(tensor_probs),1).values)
         learned_phoneme_probs = util.CTCforward(learned_phoneme,np.exp(tensor_probs.numpy()))
         matrix_probs.append(np.exp(tensor_probs.numpy()))
