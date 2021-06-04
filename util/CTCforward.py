@@ -1,27 +1,6 @@
 
 import numpy as np 
-# def alpha(t , s , matrix_l ,phoneme_list) :
-#     # t,s < 0 return 0 
-#     if t < 0 or s < 0:
-#         return 0
-#         #at timestep 0 , must begin with "-" or first char 
-#     if t == 0:
-#         if s == 0:
-#             return matrix_l[phoneme_list.index(' ')][0]
-#         if s == 1:
-#             return matrix_l[phoneme_list.index(l[1])][0]
-#         return 0
-    
-#     if 2 * s + 1 < t or 2 * t + 1 < s:
-#         return 0
-    
-#     def _alpha():
-#         return alpha(t-1, s) + alpha(t-1, s-1)
-    
-#     p = matrix_l[phoneme_list.index(l[s])][t]
-#     if l[s] == '-' or (s > 1 and l[s] == l[s-2]):
-#         return _alpha() * p    
-#     return (_ alpha() + alpha(t-1, s-2)) * p
+# create CTC forward fucntion 
 def CTCforward(learned_phoneme, matrix):
     # matrix of inference file (probs version ,not log version )
     vocabs = [' ', 'UW1', 'AW1', 'F', 'UW2', 'AO0', 'EY1', 'V',\
@@ -53,17 +32,8 @@ def CTCforward(learned_phoneme, matrix):
     # print(l)
     
     # print(matrix_labels)
-    # matrix_l = np.array()
-    # for i in idx_col : 
     matrix_l = np.array([matrix[i] for i in idx_col])
 
-    # matrix_l[2:,0] = 0
-    # matrix_l[:,-1] = 0
-    # print(np.max(matrix_l,axis=1))
-    # import pandas
-    # df = pandas.DataFrame(matrix_l)
-    # df.to_csv("data.csv")
-    # print(matrix_l)
     for i in range(1,matrix_l.shape[1]) :
         for j in range(matrix_l.shape[0]) : 
             p = matrix_l[j,i]
