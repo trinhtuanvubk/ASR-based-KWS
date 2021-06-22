@@ -46,6 +46,3 @@ print(raw_text, len(raw_text))
 a = raw_text.split(" ")
 a =" ".join(a)
 print(a)
-# import pandas as pd 
-# import numpy as np
-# pd.DataFrame(np.exp(raw_text.numpy())).to_csv("test.csv")
